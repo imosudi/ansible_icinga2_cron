@@ -460,6 +460,8 @@ aws configure set output json
 aws configure set region us-west-2
 
 EOF
+git add backup_scripts/s3backupscript.sh > /dev/null 2>&1
+
 chmod +x backup_scripts/aws_cli.sh
 sed -i "s/aws configure set aws_access_key_id/aws configure set aws_access_key_id $AWSAccessKeyId/g" backup_scripts/aws_cli.sh
 sed -i "s/aws configure set aws_secret_access_key/aws configure set aws_secret_access_key $AWSSecretKey/g" backup_scripts/aws_cli.sh
@@ -480,7 +482,7 @@ git add backup_scripts/s3backupscript.sh > /dev/null 2>&1
 
 
 #git commit -am "Project Update $(date +%Y/%m/%d-%H:%M:%S)"
-#git commit -am "Project Update $(date +-%c)"
+git commit -am "Project Update $(date +-%c)"
 
 
 cat <<'EOF' >backup_scripts/cron_job
