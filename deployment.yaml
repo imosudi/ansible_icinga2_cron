@@ -279,6 +279,7 @@
             mode=0644
             backup=yes
       notify: update timezone
+      notify: restart cron
 
 
     - name: Installing the package  "awscli"
@@ -607,4 +608,7 @@
       command: dpkg-reconfigure --frontend noninteractive tzdata
 
  
-
+    - name: restart cron
+      become: yes
+      become_method: sudo
+      command: service cron restart > /dev/null 2>&1
